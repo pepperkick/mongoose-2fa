@@ -17,6 +17,6 @@ module.exports = (schema, options) => {
     }
     
     schema.methods.verify2FAToken = async function (token) {
-        return otplib.check({ token, secret: this._2faSecret });
+        return otplib.verify({ token, secret: this._2faSecret });
     }
 }
