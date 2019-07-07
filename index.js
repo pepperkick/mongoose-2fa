@@ -8,7 +8,9 @@ module.exports = (schema, options) => {
     })
 
     schema.methods.generate2FASecret = async function () {
-        this._2faSecret = await otplib.authenticator.generateSecret()
+        this._2faSecret = await otplib.authenticator.generateSecret();
+
+        await this.save();
     }
     
     schema.methods.verify2FAToken = async function (token) {
